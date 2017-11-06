@@ -6,7 +6,7 @@ function! clipper#private#clip() abort
     let l:address = get(g:, 'ClipperAddress', 'localhost')
     let l:port = +(get(g:, 'ClipperPort', 8377)) " Co-erce to number.
     if l:port
-      call system('nc ' . l:address . ' ' . l:port, @0)
+      call system('nc -c' . l:address . ' ' . l:port, @0)
     else
       call system('nc -U ' . l:address, @0)
     endif
